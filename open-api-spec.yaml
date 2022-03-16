@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  version: '5.0.0.1'
+  title: 'Visual Storage Intelligence'
+  license:
+    name: Proprietary Unlicensed - Copyright 2022 Clear Technologies, All Rights Resevered
+servers:
+  - url: https://vsi5.visualstorageintelligence.com/api
+    description: prod
+  - url: http://vsi5-front-end-dev.cleartechnologies.net/api
+    description: dev
+  - url: http://vsi5-front-end-stage.cleartechnologies.net/api
+    description: stage
+paths:
+  /are_you_there:
+    get:
+      summary: The UI calls this when it loads the login screen.
+      operationId: are_you_there
+      tags:
+        - react-views
+      responses:
+        '200':
+          description: If the back-end is up we send version number, announcements, such as "we'll be down for maintenance on 1/29/2020".  If the UI doesn't get an answer, then it displays a "down for maintenance" screen.  The version number place-holder gets replaced by the build server with the actual build number, so don't change it in the code.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    description:  Four part build number separated by periods.  The value is filled in by the build server at the time of the build.
+                  announcements:
+                    type: array
+                    description:  Array of announcements to be displayed on the login page
+                    items:
+                      type: string
+components:
+  schemas:
+    user_info:
+      properties:
+        user_id:
+          type: integer
+        email:
+          type: string
+        token:
+          type: string
+security:
+  - BasicAuth: []
