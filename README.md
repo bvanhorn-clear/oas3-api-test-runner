@@ -1,4 +1,4 @@
-# API Tester
+# OAS API Test Runner
 
 Wouldn't it be cool if you could do an automated integration test on your API using nothing more than your OAS 3 document?
 
