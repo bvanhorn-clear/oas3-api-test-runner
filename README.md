@@ -36,6 +36,6 @@ servers:
     description: stage
 ```
 
-You could use this command:
+You could use this command to run your tests against the dev server:
 ```node index.js open-api-spec.yaml dev```
 
